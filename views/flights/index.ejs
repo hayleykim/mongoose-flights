@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<table id="list">
+    <thead>
+        <tr>
+            <th>Flight</th>
+            <!-- <th>Release<br>Year</th>
+            <th></th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <% flights.forEach(function(f) { %>
+            <tr>
+                <td>Airline</td>
+                <td>Airport</td>
+                <td>Flight Number</td>
+                <td>Departure Date</td>
+                <td>& Time</td>
+
+            </tr>
+
+            <tr>
+                <td><%= f.airline %></td>
+                <td><%= f.airport %></td>
+                <td><%= f.flightNo %></td>
+                <td><%= f.departs.toLocaleDateString() %></td>
+                <td><%= f.departsTime %></td>
+                <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+    
+
+<%- include('../partials/footer') %>

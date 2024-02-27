@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+    <div>You are creating a tickek for:</div>
+    <div>Airline: <%= flight.airline %></div>
+    <div>Airport: <%= flight.airport %></div>
+    <div>Flight Number: <%= flight.flightNo %></div>
+    <div>Flight Departure Date: <%= flight.departs.toLocaleDateString() %></div>
+    <div>Flight Departure Time: <%= flight.departsTime %></div>
+    
+    <div>Ticket:</div>
+    <ul>
+        <% tickets.forEach((t) => { %>
+            <li>
+                <div>Seat: <%= t.seat %></div>
+                <div>Price: <%= t.price %></div>
+            </li>
+        <% }) %>
+    </ul>
+</section>
+
+
+
+
+<form id="addTicketForm" action="/flights/<%= flight._id %>/tickets" method="POST">
+    
+    <label>Seat:</label>
+    <input name="seat" required pattern="[A-F][1-9]\d?">
+
+    <label>Price:</label>
+    <input type="number" name="price">
+
+    <input type="submit" value="Add Ticket">
+</form>
+
+<%- include('../partials/footer') %>
